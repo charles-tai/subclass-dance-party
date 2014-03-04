@@ -1,6 +1,9 @@
+
 body, html{
   height:100%;
+  background-image: url('background.jpg');
 }
+
 body{
   margin: 0px;
   background-color:#444;
@@ -9,7 +12,7 @@ body{
 body, a:link, a:visited, a:active{
   color: lightblue;
 }
-.title, .addDancerButton{
+.title, .addDancerButton, .lineupButton{
   padding:5px 12px;
   float:right;
 }
@@ -20,16 +23,21 @@ body, a:link, a:visited, a:active{
 .title{
   background-color: #777;
 }
+
 .dancer{
-  /*border:10px solid red;
+  position:absolute;
+}
+
+.blinkyDancer{
+  border:10px solid red;
   border-radius:10px;
-  position:absolute;*/
-  height: 5000px;
-  width: 5000px;
-  border: 1px solid black;
-  background: url(http://www.workspeednotify.com/images/small_blue_dot.jpg);
+  position:absolute;
 }
 
-.zangiefDancer{
-
+.ryuDancer{
+  height:100px;*/
+  position:absolute;
+  left:100px;
+  background-color:red;*/
 }
+

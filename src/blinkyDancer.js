@@ -1,9 +1,6 @@
 var BlinkyDancer = function(top, left, timeBetweenSteps){
-  console.log('oldStep' + JSON.stringify(this));
   Dancer.call(this, top, left, timeBetweenSteps);
-  this.$node = $('<span class="dancer"></span>');
-
-
+  this.$node.html('<span class = "blinkyDancer shake shake-slow"></span>')
 };
 
 BlinkyDancer.prototype = Object.create(Dancer.prototype);
