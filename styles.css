@@ -21,7 +21,15 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
+  /*border:10px solid red;
   border-radius:10px;
-  position:absolute;
+  position:absolute;*/
+  height: 5000px;
+  width: 5000px;
+  border: 1px solid black;
+  background: url(http://www.workspeednotify.com/images/small_blue_dot.jpg);
+}
+
+.zangiefDancer{
+
 }
