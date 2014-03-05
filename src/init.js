@@ -42,19 +42,91 @@ $(document).ready(function(){
 
   $(".checkPosition").on("click", function() {
     var dancers = window.dancers;
+    var objDancers = {};
+    var closest = Infinity;
+    var closestPairValue = Infinity;
+    var closestEdge = [];
+    var closestPair = [];
+    var currentClosestPair;
     for (var i = 0; i < dancers.length; i++) {
       for (var j = (i + 1); j < dancers.length; j++) {
         var diffY = dancers[i].top - dancers[j].top;
         var diffX = dancers[i].left - dancers[j].left;
         var hypotenuse = Math.sqrt((diffY * diffY) + (diffX * diffX));
-        console.log('diffY: ' + diffY);
-        console.log('diffX: ' + diffX);
-        console.log('hypot: ' + hypotenuse);
+        if (hypotenuse < closest) {
+          closest = hypotenuse;
+          closestDancer = dancers[j];
+          // console.log('closest: ' + closest);
+        }
+        // console.log('diffY: ' + diffY);
+        // console.log('diffX: ' + diffX);
+        // console.log('hypot: ' + hypotenuse);
         if (hypotenuse < 500) {
-          alert('too close for comfort');
+          console.log('too close for comfort');
         }
       }
+      // creating an array of edges
+      // which consists of arrays that look like [dancerA, dancerB, closest]
+      closestEdge.push([dancers[i], closestDancer, closest]);
+      closest = Infinity;
     }
+    //iterate through dancers check if it exists in each bucket of closestEdge
+    // store dancers elements into an object:
+    for (var i = 0; i < dancers.length; i++) {
+      objDancers[i] = dancers[i];
+    }
+    console.log(objDancers)
+    // loop through all Dancers
+    for (var key in objDancers) {
+      // console.log('object currently iterating on');
+      // console.log(objDancers[key]);
+      console.log('closetEdge');
+      console.log(closestEdge);
+      closestEdge.forEach(function (item) {
+      // check if dancer matches current edge
+        console.log('Dancer:')
+        console.log(objDancers[key]);
+        console.log('edge')
+        console.log(item);
+        if (objDancers[key] === item[0] || item[1]) {
+          console.log('matched!')
+          // if current edge has lower value than any other edge we've checked thus far
+          if (item[2] < closestPairValue) {
+            console.log('does this only run once?')
+            closestPairValue = item[2];
+            currentClosestPair = [item[0], item[1]];
+            item[2] = Infinity;
+          }
+        }
+      });
+      closetPairValue = Infinity;
+      // console.log('currentClosestPair push');
+      // console.log(currentClosestPair);
+      closestPair.push(currentClosestPair);
+      // console.log('closestPair array:');
+      // console.log(closestPair);
+
+
+      for (var key in objDancers) {
+        closestPair.forEach( function (item) {
+          // console.log(objDancers[key]);
+          // console.log(item);
+          if (objDancers[key] === item[0] || item[1]) {
+            delete objDancers[key];
+          }
+        });
+      // console.log(objDancers);
+      }
+      currentClosestPair = undefined;
+    }
+
+
+
+
+    // console.log('closestPairValue: ' + closestPairValue);
+    // console.dir(closestPair);
+    // console.log(objDancers);
+    // after finding closest pair,
   });
 });
 
