@@ -31,13 +31,30 @@ $(document).ready(function(){
     window.dancers.push(dancer);
   });
 
-  $(".lineupButton").on("click", function(event) {
+  $(".lineupButton").on("click", function() {
     var x = 0;
     var y = 0;
     window.dancers.forEach(function(item) {
       item.setPosition(y, x);
       x += 500;
     });
+  });
+
+  $(".checkPosition").on("click", function() {
+    var dancers = window.dancers;
+    for (var i = 0; i < dancers.length; i++) {
+      for (var j = (i + 1); j < dancers.length; j++) {
+        var diffY = dancers[i].top - dancers[j].top;
+        var diffX = dancers[i].left - dancers[j].left;
+        var hypotenuse = Math.sqrt((diffY * diffY) + (diffX * diffX));
+        console.log('diffY: ' + diffY);
+        console.log('diffX: ' + diffX);
+        console.log('hypot: ' + hypotenuse);
+        if (hypotenuse < 500) {
+          alert('too close for comfort');
+        }
+      }
+    }
   });
 });
 

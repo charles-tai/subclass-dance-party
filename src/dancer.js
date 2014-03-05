@@ -31,6 +31,8 @@ Dancer.prototype.setPosition = function(top, left){
   //
   // console.log('top ' + top);
   // console.log('left ' + left);
+  this.top = top;
+  this.left = left;
   var styleSettings = {
     top: top,
     left: left
